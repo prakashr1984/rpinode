@@ -43,7 +43,7 @@ Now that we have the hardware and software setup done. lets proceed to clone thi
 ```bash
 cd /home/pi
 git clone https://github.com/prakashr1984/rpinode.git
-cd rpinode
+cd rpinode/bitcoind
 sudo chmod +x entrypoint.sh # Give execute permission for entrypoint.sh
 ```
 
