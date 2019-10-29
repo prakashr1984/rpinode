@@ -3,7 +3,6 @@
 Docker images that helps with easy deployment of bitcoin full node on a Raspberry Pi.
 
 ## Requirements
-------------
 
 ### Hardware
 * A Raspberry Pi 3/Raspberry Pi 3. (Model 4 B, 4GB model Recommended).
@@ -65,7 +64,12 @@ make build
 ## Running the image
 Run the following command to run the container
 ```bash
+#Run the docker image in background.
 make run
+#To view the console output run the following command
+make logs  
+#Or use the docker logs command directly.
+docker logs -f bitcoind --tail 100
 ```
 Or run the docker command directly
 ```bash
