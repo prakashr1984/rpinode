@@ -1,4 +1,3 @@
-HDD = ${HDD:-/mnt/usb}
 # Build rootfs
 .PHONY: build
 build:
@@ -6,16 +5,18 @@ build:
 
 .PHONY: init
 init:
-	@mkdir -p ${HDD}/bitcoin_data
-	@cp -f bitcoin.conf ${HDD}/bitcoin_data/bitcoin.conf
+	@mkdir -p /mnt/usb/bitcoin_data
+	@cp -f bitcoin.conf /mnt/usb/bitcoin_data/bitcoin.conf
+	@chmod -R 777 /mnt/usb/bitcoin_data
 
 .PHONY: run
 run:
+	@docker rm bitcoind || true
 	@docker run --name bitcoind -d  \
-	-v ${HDD}/bitcoin_data:/home/bitcoin/.bitcoin \
+	-v /mnt/usb/bitcoin_data:/home/bitcoin/.bitcoin \
 	-p 8332:8332 \
 	-p 8333:8333 \
-	--restart unless-stopped
+	--restart unless-stopped \
 	prakashr1984/bitcoind 
 
 .PHONY: logs

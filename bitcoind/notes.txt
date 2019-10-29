@@ -1,6 +1,0 @@
-1) docker pull debian:stretch-slim
-2) apt-get update && \
-    apt-get -y upgrade && \
-    apt-get -y install sudo openssl git make build-essential python-dev python-pip python3-dev python3-pip  wget procps
-3) useradd -p $(openssl passwd -1 bolt) -m -s /bin/bash admin
-   adduser admin sudo
