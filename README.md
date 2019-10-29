@@ -1,6 +1,6 @@
 # rpinode
 
-Docker images that helps easy deployment bitcoin full node on a Raspberry Pi.
+Docker images that helps with easy deployment of bitcoin full node on a Raspberry Pi.
 
 ## Requirements
 ------------
