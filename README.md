@@ -28,6 +28,7 @@ Docker images that helps with easy deployment of bitcoin full node on a Raspberr
 - Install Docker
     ```sh
     curl -sSL https://get.docker.com/ | sh
+    sudo usermod -a -G docker $USER
     ```
 - Plug in your Portable SDD/HDD and make sure it is mounted at /mnt/usb.
   ```sh
@@ -46,6 +47,10 @@ git clone https://github.com/prakashr1984/rpinode.git
 cd rpinode/bitcoind
 sudo chmod +x entrypoint.sh # Give execute permission for entrypoint.sh
 ```
+
+### Configuration (Optional)
+If you need to use a different configuration for bitcoind you could generate it [here](https://jlopp.github.io/bitcoin-core-config-generator/)
+And replace the *bitcoin.conf* file in the source directory.
 
 ## Initialize the bitcoin data directory
 Now, we need to setup the directory to store the blockchain data.
@@ -73,5 +78,5 @@ docker logs -f bitcoind --tail 100
 ```
 Or run the docker command directly
 ```bash
-docker run -it -v /mnt/usb/bitcoin_data:/home/bitcoin/.bitcoin prakashr1984/bitcoind 
+docker run -it -v /mnt/usb/bitcoin_data:/home/bitcoin/.bitcoin prakashr1984/bitcoind  #By default runs bitcoind
 ```

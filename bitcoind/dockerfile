@@ -8,7 +8,7 @@ ENV PATH ${BITCOIN_BIN}:$PATH
 
 RUN apt-get -y update  && \
     apt-get -y upgrade && \
-    apt-get install -y wget ca-certificates gosu gnupg && \
+    apt-get install -y wget ca-certificates gosu gnupg tor && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
