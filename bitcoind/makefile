@@ -15,7 +15,7 @@ updateconf:
 
 
 .PHONY: stop
-stop: remove
+stop: 
 	@docker stop bitcoind || true
 
 .PHONY: remove
@@ -23,14 +23,17 @@ remove: stop
 	@docker rm bitcoind || true
 
 .PHONY: run
-run: stop
+run: remove
 	@docker run --name bitcoind -d  \
 	-v /mnt/usb/bitcoin_data:/home/bitcoin/.bitcoin \
-	-p 8332:8332 \
 	-p 8333:8333 \
+	-p 127.0.0.1:8332:8332 \
 	--restart unless-stopped \
 	prakashr1984/bitcoind 
 
+.PHONY: execbash
+execbash: 
+	@docker exec -it bitcoind /bin/bash
 
 .PHONY: logs
 logs:
