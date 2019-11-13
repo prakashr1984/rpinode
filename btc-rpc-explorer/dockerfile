@@ -1,0 +1,11 @@
+FROM node:8-alpine
+RUN apk --update --no-cache add git less openssh make gcc g++ python
+
+RUN git clone https://github.com/janoside/btc-rpc-explorer.git && \
+    cd /btc-rpc-explorer && \
+    npm install
+
+WORKDIR /btc-rpc-explorer
+COPY btc-rpc-explorer.env .env
+CMD npm start
+EXPOSE 3002
